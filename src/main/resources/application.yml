@@ -1,0 +1,24 @@
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI}
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: realtime.price
+          binder: cloudamqp
+      binders:
+          cloudamqp:
+            type: rabbit
+            environment:
+              spring:
+                rabbitmq:
+                  host: reindeer.rmq.cloudamqp.com
+                  username: ljusxulb
+                  password: -7nRMBlcgedOHF_ExpEBhvm-DUgjZtIk
+                  virtualHost: ljusxulb
+
+---
+spring:
+  profiles: heroku
